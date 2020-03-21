@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/wbdv-online-sp20-client-angular-lgdu'));
+app.use(express.static(__dirname + '/dist/wbdv-online-sp20-client-angular-legendu'));
 
 app.get('/*', function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/wbdv-online-sp20-client-angular-lgdu/index.html'));
+res.sendFile(path.join(__dirname+'/dist/wbdv-online-sp20-client-angular-legendu/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
