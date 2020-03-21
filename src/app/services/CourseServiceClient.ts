@@ -7,11 +7,11 @@ export class CourseServiceClient {
       .then(response => response.json())
 
   findCourseById = (courseId) =>
-    fetch(`http://wbdv-generic-server.herokuapp.com/api/001023157/courses/${courseId}`)
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/001023157/courses/${courseId}`)
       .then(response => response.json())
 
   createCourse = (course) =>
-    fetch(`http://wbdv-generic-server.herokuapp.com/api/001023157/courses`, {
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/001023157/courses`, {
       method: 'POST',
       body: JSON.stringify(course),
       headers: {
@@ -20,7 +20,7 @@ export class CourseServiceClient {
     }).then(response => response.json())
 
   deleteCourse = (courseId) =>
-    fetch(`http://wbdv-generic-server.herokuapp.com/api/001023157/courses/${courseId}`, {
+    fetch(`https://wbdv-generic-server.herokuapp.com/api/001023157/courses/${courseId}`, {
       method: 'DELETE'
     }).then(response => response.json())
 }
