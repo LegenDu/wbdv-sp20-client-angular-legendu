@@ -15,9 +15,11 @@ export class CourseViewerComponent implements OnInit {
   course = {
     title: ''
   };
+  layout = '';
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const courseId = params.courseId;
+      this.layout = params.layout;
       this.service.findCourseById(courseId)
         .then(course => this.course = course);
     });

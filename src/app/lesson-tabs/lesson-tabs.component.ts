@@ -12,12 +12,14 @@ export class LessonTabsComponent implements OnInit {
   constructor(private service: LessonServiceClient, private  route: ActivatedRoute) { }
 
   lessons = [];
+  layout = '';
   courseId = '';
   moduleId = '';
   lessonId = '';
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.layout = params.layout;
       this.courseId = params.courseId;
       this.moduleId = params.moduleId;
       this.lessonId = params.lessonId;

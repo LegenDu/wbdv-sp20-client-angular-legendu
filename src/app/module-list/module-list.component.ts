@@ -15,8 +15,10 @@ export class ModuleListComponent implements OnInit {
   modules = [];
   courseId = '';
   moduleId = '';
+  layout = '';
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.layout = params.layout;
       this.courseId = params.courseId;
       this.moduleId = params.moduleId;
       this.service.findModulesForCourse(this.courseId)
