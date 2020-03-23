@@ -8,15 +8,23 @@
     </span>
   </div>
   <ul class="list-group">
-    <li class="list-group-item" [class]="{'active': answer === 'TRUE'}">
+    <li class="list-group-item" [class]="{'active': answer === 'true'}">
       <label>
-        <input [(ngModel)]="answer" type="radio" value="TRUE" name="{{question._id}}"/> TRUE
+        <input [(ngModel)]="answer" type="radio" value="true" name="{{question._id}}"/> True
       </label>
+      <span [hidden]="grading === false">
+        <i [hidden]="'true' !== question.correct " class="fa fa-check fa-2x float-right" style="color: green"></i>
+        <i [hidden]="'true' === question.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+      </span>
     </li>
-    <li class="list-group-item" [class]="{'active': answer === 'FALSE'}">
+    <li class="list-group-item" [class]="{'active': answer === 'false'}">
       <label>
-        <input [(ngModel)]="answer" type="radio" value="FALSE" name="{{question._id}}"/> FALSE
+        <input [(ngModel)]="answer" type="radio" value="false" name="{{question._id}}"/> False
       </label>
+      <span [hidden]="grading === false">
+        <i [hidden]="'false' !== question.correct" class="fa fa-check fa-2x float-right" style="color: green"></i>
+        <i [hidden]="'false' === question.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+      </span>
     </li>
   </ul>
   <div class="row py-2 ml-2">
