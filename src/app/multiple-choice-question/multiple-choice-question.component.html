@@ -8,11 +8,14 @@
     </span>
   </div>
   <ul class="list-group">
-    <li *ngFor="let choice of question.choices" class="list-group-item">
+    <li *ngFor="let choice of question.choices" class="list-group-item"
+        [class]="{'active': answer === choice && !grading,
+                  'bg-danger': grading && answer === choice && question.correct !== choice,
+                  'bg-success': grading && question.correct === choice}">
       <label>
         <input [(ngModel)]="answer" value="{{choice}}" type="radio" name="{{question._id}}"/> {{choice}}
       </label>
-      <span [hidden]="grading === false">
+      <span *ngIf="grading">
         <i [hidden]="choice !== question.correct" class="fa fa-check fa-2x float-right" style="color: green"></i>
         <i [hidden]="choice === question.correct || choice !== answer" class="fa fa-times fa-2x float-right" style="color: red"></i>
       </span>

@@ -8,22 +8,26 @@
     </span>
   </div>
   <ul class="list-group">
-    <li class="list-group-item" [class]="{'active': answer === 'true'}">
+    <li class="list-group-item" [class]="{'active': answer === 'true',
+        'bg-success': grading && question.correct === 'true',
+        'bg-danger': grading && question.correct !== 'true' && answer === 'true'}">
       <label>
         <input [(ngModel)]="answer" type="radio" value="true" name="{{question._id}}"/> True
       </label>
       <span [hidden]="grading === false">
         <i [hidden]="'true' !== question.correct " class="fa fa-check fa-2x float-right" style="color: green"></i>
-        <i [hidden]="'true' === question.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+        <i [hidden]="'true' === question.correct || 'true' === answer" class="fa fa-times fa-2x float-right" style="color: red"></i>
       </span>
     </li>
-    <li class="list-group-item" [class]="{'active': answer === 'false'}">
+    <li class="list-group-item" [class]="{'active': answer === 'false',
+        'bg-success': grading && question.correct === 'false',
+        'bg-danger': grading && question.correct !== 'false' && answer === 'false'}">
       <label>
         <input [(ngModel)]="answer" type="radio" value="false" name="{{question._id}}"/> False
       </label>
       <span [hidden]="grading === false">
         <i [hidden]="'false' !== question.correct" class="fa fa-check fa-2x float-right" style="color: green"></i>
-        <i [hidden]="'false' === question.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+        <i [hidden]="'false' === question.correct || 'false' !== answer" class="fa fa-times fa-2x float-right" style="color: red"></i>
       </span>
     </li>
   </ul>
@@ -34,10 +38,5 @@
     <span class="btn btn-success" (click)="grade()">Grade</span>
   </div>
 </div>
-
-<!--Correct answer: {{question.correct}}-->
-<!--<br/>-->
-<!--<span [hidden]="answer === question.correct || answer === 'No answer yet'">Wrong answer</span>-->
-<!--<span [hidden]="answer !== question.correct || answer !== 'No answer yet'">Right answer</span>-->
 
 
