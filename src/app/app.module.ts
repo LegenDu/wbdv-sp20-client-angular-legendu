@@ -12,9 +12,9 @@ import {CourseServiceClient} from './services/CourseServiceClient';
 import {ModuleServiceClient} from './services/ModuleServiceClient';
 import {LessonServiceClient} from './services/LessonServiceClient';
 import { QuizzesComponent } from './quizzes/quizzes.component';
-import {QuizzesServiceClient} from './services/QuizzesServiceClient';
 import { QuizComponent } from './quiz/quiz.component';
-import {QuizServiceClient} from './services/QuizServiceClient';
+import { QuizServiceClient } from './services/QuizServiceClient';
+import {QuestionServiceClient} from './services/QuestionServiceClient';
 import { TrueFalseQuestionComponent } from './true-false-question/true-false-question.component';
 import { MultipleChoiceQuestionComponent } from './multiple-choice-question/multiple-choice-question.component';
 
@@ -39,8 +39,8 @@ import { MultipleChoiceQuestionComponent } from './multiple-choice-question/mult
     CourseServiceClient,
     ModuleServiceClient,
     LessonServiceClient,
-    QuizzesServiceClient,
-    QuizServiceClient
+    QuizServiceClient,
+    QuestionServiceClient
   ],
   bootstrap: [AppComponent]
 })

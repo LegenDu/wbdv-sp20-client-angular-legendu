@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: ':layout/courses/:courseId/modules', component: CourseViewerComponent},
   {path: ':layout/courses/:courseId/modules/:moduleId/lessons', component: CourseViewerComponent},
   {path: ':layout/courses/:courseId/modules/:moduleId/lessons/:lessonId', component: CourseViewerComponent},
-  {path: 'quizzes', component: QuizzesComponent},
-  {path: 'quizzes/:quizId', component: QuizComponent}
+  {path: 'courses/:courseId/quizzes', component: QuizzesComponent},
+  {path: 'courses/:courseId/quizzes/:quizId', component: QuizComponent}
 ];
 
 @NgModule({

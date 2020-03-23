@@ -1,1 +1,35 @@
-{{question.title}}
+<!--<h3>True or False</h3>-->
+<div class="container px-1">
+  <div class="row">
+    <h4 class="col-auto">{{question.question}}</h4>
+    <span [hidden]="grading === false">
+      <i [hidden]="answer !== question.correct" class="fa fa-check fa-2x float-right" style="color: green"></i>
+      <i [hidden]="answer === question.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+    </span>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" [class]="{'active': answer === 'TRUE'}">
+      <label>
+        <input [(ngModel)]="answer" type="radio" value="TRUE" name="{{question._id}}"/> TRUE
+      </label>
+    </li>
+    <li class="list-group-item" [class]="{'active': answer === 'FALSE'}">
+      <label>
+        <input [(ngModel)]="answer" type="radio" value="FALSE" name="{{question._id}}"/> FALSE
+      </label>
+    </li>
+  </ul>
+  <div class="row py-2 ml-2">
+    Your answer is: {{answer}}
+  </div>
+  <div class="row py-2 ml-2">
+    <span class="btn btn-success" (click)="grade()">Grade</span>
+  </div>
+</div>
+
+<!--Correct answer: {{question.correct}}-->
+<!--<br/>-->
+<!--<span [hidden]="answer === question.correct || answer === 'No answer yet'">Wrong answer</span>-->
+<!--<span [hidden]="answer !== question.correct || answer !== 'No answer yet'">Right answer</span>-->
+
+

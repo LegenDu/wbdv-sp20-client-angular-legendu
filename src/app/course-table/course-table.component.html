@@ -1,10 +1,4 @@
 <div class="container mt-3">
-    <!-- <div class="input-group my-3 ">
-      <input type="text" class="form-control" [(ngModel)]="courseTitle" placeholder="New Course"/>
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="addCourse()">Add</button>
-      </div>
-    </div> -->
     <ul class="list-group">
       <li class="list-group-item">Course</li>
       <li class="list-group-item" *ngFor="let course of courses">
@@ -14,9 +8,10 @@
           </span>
           {{course.title}}
         </a>
-        <!-- <button id="delBtn" class="float-right btn-danger" (click)="deleteCourse(course._id)">Delete</button> -->
+        <a class="float-right" href="/courses/{{course._id}}/quizzes">
+          Quizzes
+        </a>
       </li>
   </ul>
-  </div>
-  
-  
+</div>
+

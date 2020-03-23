@@ -10,9 +10,16 @@ export class TrueFalseQuestionComponent implements OnInit {
   constructor() { }
 
   @Input()
-  question
-
+  question = {_id: '', title: '', question: '', answer: '', correct: ''};
+  grading = false;
+  answer = ''
   ngOnInit(): void {
   }
-
+  grade = () => {
+    if (this.answer !== '') {
+      this.grading = true;
+    } else {
+      alert('Please answer the question before grading!')
+    }
+  }
 }

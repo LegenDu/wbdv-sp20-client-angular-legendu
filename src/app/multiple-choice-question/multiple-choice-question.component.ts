@@ -12,7 +12,17 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   @Input()
   question
 
+  grading = false;
+  answer = ''
+
   ngOnInit(): void {
+  }
+  grade = () => {
+    if (this.answer !== '') {
+      this.grading = true;
+    } else {
+      alert('Please answer the question before grading!');
+    }
   }
 
 }

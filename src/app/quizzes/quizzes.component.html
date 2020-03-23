@@ -1,9 +1,21 @@
-<p>quizzes works!</p>
-<h1>Quizzes</h1>
-<ul>
-  <li *ngFor="let quiz of quizzes">
-    <a routerLink="/quizzes/{{quiz._id}}">
-      {{quiz.title}}
-    </a>
-  </li>
-</ul>
+<div class="container mt-3">
+  <h1>Quizzes</h1>
+  <ul class="list-group">
+    <li *ngFor="let quiz of quizzes" class="list-group-item">
+      <a routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
+        {{quiz.title}}
+      </a>
+      <a class="btn btn-primary float-right"
+         routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
+        Start
+      </a>
+<!--      <button (click)="deleteQuiz(quiz)">-->
+<!--        Delete Quiz-->
+<!--      </button>-->
+    </li>
+  </ul>
+</div>
+<!--<button (click)="createQuiz()">-->
+<!--  Create Quiz-->
+<!--</button>-->
+

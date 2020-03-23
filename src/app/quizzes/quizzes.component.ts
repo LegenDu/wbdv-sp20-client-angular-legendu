@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {QuizzesServiceClient} from '../services/QuizzesServiceClient';
+import {QuizServiceClient} from '../services/QuizServiceClient';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-quizzes',
@@ -8,13 +9,27 @@ import {QuizzesServiceClient} from '../services/QuizzesServiceClient';
 })
 export class QuizzesComponent implements OnInit {
 
-  constructor(private service: QuizzesServiceClient) { }
+  constructor(private service: QuizServiceClient,
+              private route: ActivatedRoute) { }
 
   quizzes = [];
+  courseId = '';
 
   ngOnInit(): void {
-    this.service.findAllQuizzes()
-      .then(quizzes => this.quizzes = quizzes);
+    this.route.params.subscribe(params => {
+      this.courseId = params.courseId;
+      this.service.findAllQuizzes()
+        .then(quizzes => this.quizzes = quizzes);
+    });
   }
 
+  createQuiz = () => {
+    this.service.createQuiz()
+      .then(quiz => this.quizzes.push(quiz));
+  }
+
+  deleteQuiz = (quizDeleted) => {
+    this.service.deleteQuiz(quizDeleted._id)
+      .then(status => this.quizzes = this.quizzes.filter(quiz => quiz._id !== quizDeleted._id));
+  }
 }
