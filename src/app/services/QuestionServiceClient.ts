@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
+const URL = 'https://wbdv-sp20-server-node-lgdu.herokuapp.com'
 
 @Injectable()
 export class QuestionServiceClient {
   findQuestionsForQuiz = (qid) =>
-    fetch(`http://localhost:3000/api/quizzes/${qid}/questions`)
+    fetch(`${URL}/api/quizzes/${qid}/questions`)
       .then(response => response.json())
 }

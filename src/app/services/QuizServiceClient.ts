@@ -1,17 +1,18 @@
 import {Injectable} from '@angular/core';
+const URL = 'https://wbdv-sp20-server-node-lgdu.herokuapp.com'
 
 @Injectable()
 export class QuizServiceClient {
   findAllQuizzes = () =>
-    fetch(`http://localhost:3000/api/quizzes`)
+    fetch(`${URL}/api/quizzes`)
       .then(response => response.json())
 
   findQuizById = (quizId) =>
-    fetch(`http://localhost:3000/api/quizzes/${quizId}`)
+    fetch(`${URL}/api/quizzes/${quizId}`)
       .then(response => response.json())
 
   createQuiz = () =>
-    fetch(`http://localhost:3000/api/quizzes`, {
+    fetch(`${URL}/api/quizzes`, {
       method: 'post',
       body: JSON.stringify({title: 'NEW QUIZ'}),
       headers: {
@@ -20,7 +21,7 @@ export class QuizServiceClient {
     }).then(response => response.json())
 
   deleteQuiz = (quizId) =>
-    fetch(`http://localhost:3000/api/quizzes/${quizId}`, {
+    fetch(`${URL}/api/quizzes/${quizId}`, {
         method: 'delete'
       }
     )
