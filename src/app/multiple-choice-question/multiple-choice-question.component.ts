@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-multiple-choice-question',
@@ -10,19 +10,26 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   constructor() { }
 
   @Input()
-  question = {_id: '', title: '', question: '', choices: '', correct: '', answer: ''}
-
+  question
+  @Input()
+  answer
+  @Output()
+  answerChange = new EventEmitter<string>()
   grading = false;
-  answer = ''
+
+  submitAnswer = () => {
+    this.answerChange.emit(this.answer)
+    this.grading = true
+  }
 
   ngOnInit(): void {
   }
-  grade = () => {
-    if (this.answer !== '') {
-      this.grading = true;
-    } else {
-      alert('Please answer the question before grading!');
-    }
-  }
+  // grade = () => {
+  //   if (this.answer !== '') {
+  //     this.grading = true;
+  //   } else {
+  //     alert('Please answer the question before grading!');
+  //   }
+  // }
 
 }

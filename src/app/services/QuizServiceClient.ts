@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-const URL = 'https://wbdv-sp20-server-node-lgdu.herokuapp.com'
-
+// const URL = 'https://wbdv-sp20-server-node-lgdu.herokuapp.com'
+const URL = 'http://localhost:3000'
 @Injectable()
 export class QuizServiceClient {
   findAllQuizzes = () =>
