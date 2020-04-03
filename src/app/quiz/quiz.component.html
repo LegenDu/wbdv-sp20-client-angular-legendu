@@ -1,19 +1,49 @@
 <div class="container my-3">
-  <h1>Quiz</h1>
+  <div>
+    <h1 class="d-inline">Quiz</h1>
+    <span class="float-right" [hidden]="graded === false">
+      <h4 style="color: green">Score: {{score}}</h4>
+    </span>
+
+  </div>
   <ul class="list-group">
     <li *ngFor="let question of this.questions" class="list-group-item"
         [ngSwitch]="question.type">
         <app-multiple-choice-question
           [question]="question"
+          [graded]="graded"
           [(answer)]="question.answer"
           *ngSwitchCase="'MULTIPLE_CHOICE'"></app-multiple-choice-question>
         <app-true-false-question
           [question]="question"
+          [graded]="graded"
           [(answer)]="question.answer"
           *ngSwitchCase="'TRUE_FALSE'"></app-true-false-question>
     </li>
   </ul>
-  <div class="btn btn-primary mt-3" (click)="submitQuiz()">
-    Submit Quiz
+  <div class="text-center">
+    <span class="btn btn-primary mt-3 mr-3" (click)="submitQuiz()">
+      Submit Quiz
+    </span>
+    <span class="btn btn-outline-primary mt-3" [hidden]="graded === false"
+      (click)="showAttempts()">
+      Show Attempts
+    </span>
+  </div>
+  <div class="mt-3" [hidden]="getAttempts === false">
+    <ul class="list-group">
+      <li *ngFor="let attempt of this.attempts" class="list-group-item">
+        <span style="color: green">Score: {{attempt.score}}</span>
+        <ul class="list-group mx-3">
+          <li *ngFor="let ans of attempt.answers" class="list-group-item row">
+              {{ans.title}}
+            <span>
+              <i [hidden]="ans.answer !== ans.correct" class="fa fa-check fa-2x float-right" style="color: green"></i>
+              <i [hidden]="ans.answer === ans.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+            </span>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>

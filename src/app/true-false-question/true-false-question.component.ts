@@ -11,28 +11,28 @@ export class TrueFalseQuestionComponent implements OnInit {
 
   @Input()
   question
-  grading = false;
+  @Input()
+  graded
   @Input()
   answer
   @Output()
   answerChange = new EventEmitter<string>()
+  submitted = false
 
   submitAnswer = () => {
     if (this.answer === '') {
-      alert('Please select your answer before submit.')
+      alert('Please select your answer before submit.');
     } else {
-        this.answerChange.emit(this.answer)
-        this.grading = true
+        this.answerChange.emit(this.answer);
+        this.submitted = true;
     }
+  }
+
+  resetAnswer = () => {
+    this.submitted = false;
   }
 
   ngOnInit(): void {
   }
-  // grade = () => {
-  //   if (this.answer !== '') {
-  //     this.grading = true;
-  //   } else {
-  //     alert('Please answer the question before grading!')
-  //   }
-  // }
+
 }

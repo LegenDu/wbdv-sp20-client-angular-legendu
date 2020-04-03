@@ -12,15 +12,26 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   @Input()
   question
   @Input()
+  graded
+  @Input()
   answer
   @Output()
   answerChange = new EventEmitter<string>()
-  grading = false;
+  submitted = false
 
   submitAnswer = () => {
-    this.answerChange.emit(this.answer)
-    this.grading = true
+    if (this.answer === '') {
+      alert('Please select your answer before submit.');
+    } else {
+      this.answerChange.emit(this.answer);
+      this.submitted = true;
+    }
   }
+
+  resetAnswer = () => {
+    this.submitted = false;
+  }
+
 
   ngOnInit(): void {
   }

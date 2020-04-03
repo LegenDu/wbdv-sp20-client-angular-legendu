@@ -13,18 +13,32 @@ export class QuizComponent implements OnInit {
               private route: ActivatedRoute) { }
   quizId = ''
   questions = []
+  attempts = []
+  graded = false
+  getAttempts = false
+  score = 0
 
   submitQuiz = () => {
     this.service.submitQuiz(this.questions, this.quizId)
-      .then(result => console.log(result))
+      .then(result => {
+        this.score = result.score;
+        this.graded = true;
+      });
+  }
+
+  showAttempts = () => {
+    this.service.findQuizAttempts(this.quizId)
+      .then(attempts => {
+        this.attempts = attempts;
+        this.getAttempts = true;
+      });
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.quizId = params.quizId;
       this.service.findQuestionsForQuiz(this.quizId)
-        .then(quiz => this.questions = quiz.questions)
-        // .then(questions => this.questions = questions);
+        .then(questions => this.questions = questions);
     });
   }
 }

@@ -16,4 +16,8 @@ export class QuestionServiceClient {
         'content-type': 'application/json'
       }
     }).then(response => response.json())
+
+  findQuizAttempts = (qid) =>
+    fetch(`${URL}/api/quizzes/${qid}/attempts`)
+      .then(response => response.json())
 }
