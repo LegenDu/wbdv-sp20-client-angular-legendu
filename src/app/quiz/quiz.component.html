@@ -33,7 +33,7 @@
   <div class="mt-3" [hidden]="getAttempts === false">
     <ul class="list-group">
       <li *ngFor="let attempt of this.attempts" class="list-group-item">
-        <span style="color: green">Score: {{attempt.score}}</span>
+        <span style="color: green"><h3>Score: {{attempt.score}}</h3></span>
         <ul class="list-group mx-3">
           <li *ngFor="let ans of attempt.answers" class="list-group-item row">
               {{ans.title}}
