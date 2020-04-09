@@ -2,16 +2,34 @@
   <h1>Quizzes</h1>
   <ul class="list-group">
     <li *ngFor="let quiz of quizzes" class="list-group-item">
-      <a routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
-        {{quiz.title}}
-      </a>
-      <a class="btn btn-primary float-right"
-         routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
-        Start
-      </a>
-<!--      <button (click)="deleteQuiz(quiz)">-->
-<!--        Delete Quiz-->
-<!--      </button>-->
+      <div class="row mb-2">
+        <span class="col-8">
+          <a routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
+            <h4>{{quiz.title}}</h4>
+          </a>
+        </span>
+        <span class="col-4 text-right">
+          <a class="btn btn-primary"
+             routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}">
+            Start
+          </a>
+        </span>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item" style="color: green" [hidden]="quiz.attempts.length === 0"><h5>Attempts</h5></li>
+        <li *ngFor="let attempt of quiz.attempts" class="list-group-item">
+          <span>Score: {{attempt.score}} %</span>
+            <ul class="list-group mx-3">
+              <li *ngFor="let ans of attempt.answers" class="list-group-item row">
+                  {{ans.title}}
+                <span>
+                  <i [hidden]="ans.answer !== ans.correct" class="fa fa-check fa-2x float-right" style="color: green"></i>
+                  <i [hidden]="ans.answer === ans.correct" class="fa fa-times fa-2x float-right" style="color: red"></i>
+                </span>
+              </li>
+            </ul>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

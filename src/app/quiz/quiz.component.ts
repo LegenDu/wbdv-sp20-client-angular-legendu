@@ -12,10 +12,9 @@ export class QuizComponent implements OnInit {
   constructor(private service: QuestionServiceClient,
               private route: ActivatedRoute) { }
   quizId = ''
+  courseId = ''
   questions = []
-  attempts = []
   graded = false
-  getAttempts = false
   score = 0
 
   submitQuiz = () => {
@@ -26,17 +25,10 @@ export class QuizComponent implements OnInit {
       });
   }
 
-  showAttempts = () => {
-    this.service.findQuizAttempts(this.quizId)
-      .then(attempts => {
-        this.attempts = attempts;
-        this.getAttempts = true;
-      });
-  }
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.quizId = params.quizId;
+      this.courseId = params.courseId;
       this.service.findQuestionsForQuiz(this.quizId)
         .then(questions => this.questions = questions);
     });
