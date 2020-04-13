@@ -12,12 +12,11 @@ export class MultipleChoiceQuestionComponent implements OnInit {
   @Input()
   question
   @Input()
-  graded
-  @Input()
   answer
   @Output()
   answerChange = new EventEmitter<string>()
   submitted = false
+  graded = false
 
   submitAnswer = () => {
     if (this.answer === '') {
@@ -25,11 +24,13 @@ export class MultipleChoiceQuestionComponent implements OnInit {
     } else {
       this.answerChange.emit(this.answer);
       this.submitted = true;
+      this.graded = true;
     }
   }
 
   resetAnswer = () => {
     this.submitted = false;
+    this.graded = false;
   }
 
 

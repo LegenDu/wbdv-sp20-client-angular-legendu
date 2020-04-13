@@ -14,14 +14,12 @@ export class QuizComponent implements OnInit {
   quizId = ''
   courseId = ''
   questions = []
-  graded = false
   score = 0
 
   submitQuiz = () => {
     this.service.submitQuiz(this.questions, this.quizId)
       .then(result => {
         this.score = result.score;
-        this.graded = true;
       });
   }
 
